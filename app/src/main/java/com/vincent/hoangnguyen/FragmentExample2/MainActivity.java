@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,11 +13,12 @@ public class MainActivity extends AppCompatActivity {
     private Button mButton;
     private boolean isFragmentDisplayed = false;
     static final String STATE_FRAGMENT = "state_of_fragment";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        mButton = findViewById(R.id.open_button); // find button better should right now after setContentView
         // If returning from a configuration change, get the
         // fragment state and set the button text.
         if(savedInstanceState != null){
@@ -25,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
                 mButton.setText(R.string.close);
             }
         }
-        mButton = findViewById(R.id.open_button);
+
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,4 +76,12 @@ public class MainActivity extends AppCompatActivity {
         saveInstanceState.putBoolean(STATE_FRAGMENT, isFragmentDisplayed);
         super.onSaveInstanceState(saveInstanceState);
     }
+
+    public void next_click(View view) {
+        Intent intent_next = new Intent(this,SecondActivity.class);
+        startActivity(intent_next);
+    }
+
+
+
 }
