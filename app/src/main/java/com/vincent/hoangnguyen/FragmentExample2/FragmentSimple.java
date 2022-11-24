@@ -44,7 +44,7 @@ public class FragmentSimple extends Fragment {
         });
         return rootView;
     }
-    public static FragmentSimple newInstance(){
+    public static FragmentSimple newInstance (){
         return new FragmentSimple();
     }
 }
